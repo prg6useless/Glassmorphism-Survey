@@ -1,4 +1,7 @@
+import { useNavigate } from "react-router-dom";
+
 const ThankYou = () => {
+  const navigate = useNavigate();
   return (
     <>
       <section className="rounded-3xl shadow-2xl">
@@ -10,6 +13,15 @@ const ThankYou = () => {
           <h2 className="mt-6 text-3xl font-bold">
             Thank you for filling the survey!
           </h2>
+          <button
+            type="submit"
+            onClick={() => {
+              navigate("/");
+            }}
+            className="rounded-lg bg-indigo-600 mt-5 px-5 py-3 text-sm font-medium text-white"
+          >
+            Take The Survey Again
+          </button>
         </div>
       </section>
     </>

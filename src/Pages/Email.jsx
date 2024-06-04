@@ -1,5 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
+import { collection, addDoc } from "firebase/firestore";
+import { db } from "../firebase";
 
 const Email = () => {
   const navigate = useNavigate();
@@ -13,10 +15,23 @@ const Email = () => {
     setFormData((prevFormData) => ({ ...prevFormData, [name]: value }));
   };
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
-    alert(`Name: ${formData.name}, Email: ${formData.email}`);
-    navigate("/questions");
+    if (!formData.name || !formData.email) {
+      alert("Please fill out both the name and email fields.");
+      return;
+    }
+    try {
+      const docRef = await addDoc(collection(db, "user"), {
+        data: formData,
+      });
+      console.log("Document written with ID: ", docRef.id);
+      navigate("/questions", {
+        state: { name: formData.name, email: formData.email },
+      });
+    } catch (e) {
+      console.error("Error adding document: ", e);
+    }
   };
   return (
     <>

@@ -32,27 +32,16 @@ const Sliders = () => {
           </p>
         </div>
       </article>
-      <span className="flex justify-evenly mt-5">
-        <button
-          type="submit"
-          onClick={() => {
-            navigate("/questions");
-          }}
-          className="rounded-lg bg-indigo-600 px-5 py-3 text-sm font-medium text-white"
-        >
-          Go Back
-        </button>
 
-        <button
-          type="submit"
-          onClick={() => {
-            navigate("/thankyou");
-          }}
-          className="rounded-lg bg-indigo-600 px-5 py-3 text-sm font-medium text-white"
-        >
-          Submit
-        </button>
-      </span>
+      <button
+        type="submit"
+        onClick={() => {
+          navigate("/thankyou");
+        }}
+        className="rounded-lg bg-indigo-600 mt-5 px-5 py-3 text-sm font-medium text-white"
+      >
+        Submit
+      </button>
     </>
   );
 };

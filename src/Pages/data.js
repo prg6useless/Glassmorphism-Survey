@@ -145,7 +145,7 @@ export const questions = [
       },
       {
         heading: "What do you prefer most about glassmorphism design?",
-        options: ["Yes", "Neutral", "No"],
+        options: ["Translucent appearance", "Modern look", "Depth and realism"],
       },
     ],
   },

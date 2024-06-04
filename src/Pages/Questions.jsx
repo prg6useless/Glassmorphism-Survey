@@ -1,9 +1,14 @@
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import { useState } from "react";
+import { collection, addDoc } from "firebase/firestore";
+import { db } from "../firebase"; //
 import { questions } from "../Pages/data";
 
 const Questions = () => {
   const navigate = useNavigate();
+  const location = useLocation();
+  const { name, email } = location.state || {};
+
   const [selectedOptions, setSelectedOptions] = useState({});
   const [errors, setErrors] = useState({});
 
@@ -23,7 +28,7 @@ const Questions = () => {
     });
   };
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
     const newErrors = {};
     let isValid = true;
@@ -48,6 +53,16 @@ const Questions = () => {
           answer: selectedOptions[key],
         };
       });
+      try {
+        const docRef = await addDoc(collection(db, "surveyResponses"), {
+          name,
+          email,
+          answers,
+        });
+        console.log("Document written with ID: ", docRef.id);
+      } catch (e) {
+        console.error("Error adding document: ", e);
+      }
       console.log("Selected Options:", answers);
       navigate("/sliders");
     }
