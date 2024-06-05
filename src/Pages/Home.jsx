@@ -50,8 +50,9 @@ const Home = () => {
                 Get started
               </Link>
               <a
-                href="#"
+                href="https://www.interaction-design.org/literature/topics/glassmorphism"
                 className="text-sm font-semibold leading-6 text-gray-900"
+                target="_blank"
               >
                 Learn more <span aria-hidden="true">→</span>
               </a>
