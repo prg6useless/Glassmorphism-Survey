@@ -1,0 +1,28 @@
+.background {
+  background-image: url("../assets/background.svg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  border-radius: 1rem;
+  box-shadow: 1px 1px 10px 10px rgba(0, 0, 0, 0.306);
+  /* margin: 2rem;
+  padding: 2rem; */
+}
+
+.card {
+  backdrop-filter: blur(16px) saturate(200%);
+  -webkit-backdrop-filter: blur(16px) saturate(200%);
+  background-color: rgba(17, 25, 40, 0.5);
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.125);
+}
+
+.slider {
+  width: 400px;
+  display: flex;
+  background-color: #ffffff;
+  border-radius: 10px;
+  padding: 10px;
+  gap: 10px;
+  color: #4f46e5;
+  font-weight: bold;
+}

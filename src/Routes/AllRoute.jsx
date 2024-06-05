@@ -4,6 +4,7 @@ import Questions from "../Pages/Questions";
 import Sliders from "../Pages/Sliders";
 import ThankYou from "../Pages/ThankYou";
 import Home from "../Pages/Home";
+import NotFound from "../Pages/NotFound";
 
 const AllRoute = () => {
   return (
@@ -15,6 +16,7 @@ const AllRoute = () => {
         <Route path="/questions" element={<Questions />} />
         <Route path="/sliders" element={<Sliders />} />
         <Route path="/thankyou" element={<ThankYou />} />
+        <Route path="*" element={<NotFound />} />
       </Routes>
     </BrowserRouter>
   );

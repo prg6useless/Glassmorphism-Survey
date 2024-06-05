@@ -69,8 +69,13 @@ const Questions = () => {
       } catch (e) {
         console.error("Error adding document: ", e);
       }
-      console.log("Selected Options:", answers);
-      navigate("/sliders", { replace: true });
+      navigate(
+        "/sliders",
+        {
+          state: { name, email, answers },
+        },
+        { replace: true }
+      );
     }
   };
 
