@@ -65,7 +65,7 @@ const Sliders = () => {
 
   useEffect(() => {
     if (!name || !email) {
-      navigate("/home");
+      navigate("/");
     }
   }, [name, email, navigate]);
 
@@ -157,7 +157,7 @@ const Sliders = () => {
   return (
     <>
       <div
-        className="absolute inset-x-0 -top-40 -z-10 transform-gpu overflow-hidden blur-3xl sm:-top-80"
+        className="fixed inset-x-0 -top-40 -z-10 transform-gpu overflow-hidden blur-3xl sm:-top-80"
         aria-hidden="true"
       >
         <div
@@ -193,7 +193,7 @@ const Sliders = () => {
                     id="email"
                     className="bg-transparent border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-transparent dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
                     placeholder="name@company.com"
-                    required
+                    disabled
                   />
                 </div>
                 <div>
@@ -209,7 +209,7 @@ const Sliders = () => {
                     id="password"
                     placeholder="••••••••"
                     className=" bg-transparent border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark: bg-transparent dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
-                    required
+                    disabled
                   />
                 </div>
                 <div className="flex items-start">
@@ -220,7 +220,7 @@ const Sliders = () => {
                         type="checkbox"
                         value=""
                         className="w-4 h-4 border border-gray-300 rounded bg-gray-50 focus:ring-3 focus:ring-blue-300 dark:bg-gray-700 dark:border-gray-600 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800"
-                        required
+                        disabled
                       />
                     </div>
                     <label
@@ -236,7 +236,7 @@ const Sliders = () => {
                 </div>
                 <button
                   disabled
-                  className="w-full text-white bg-indigo-600 hover:bg-indigo-500 focus:ring-4 focus:outline-none focus:ring-indigo-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-indigo-600 dark:hover:bg-indigo-700 dark:focus:ring-indigo-800"
+                  className="w-full text-white bg-indigo-600 hover:bg-indigo-500 hover:cursor-not-allowed focus:ring-4 focus:outline-none focus:ring-indigo-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-indigo-600 dark:hover:bg-indigo-700 dark:focus:ring-indigo-800"
                 >
                   Login to your account
                 </button>

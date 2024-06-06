@@ -5,7 +5,7 @@ const Home = () => {
     <div className="bg-white">
       <div className="relative isolate px-6 pt-5 lg:px-8">
         <div
-          className="absolute inset-x-0 -top-40 -z-10 transform-gpu overflow-hidden blur-3xl sm:-top-80"
+          className="fixed inset-x-0 -top-40 -z-10 transform-gpu overflow-hidden blur-3xl sm:-top-80"
           aria-hidden="true"
         >
           <div
@@ -31,9 +31,12 @@ const Home = () => {
               leading to improved practices and innovations. The survey takes
               about 10 minutes, and your cooperation is immensely valuable in
               advancing our research efforts. Thank you for contributing to the
-              advancement of knowledge in this area. 
-              <br/>If you want to explore more
-              about glassmorphism then please click on &quot;Learn More&quot;.
+              advancement of knowledge in this area.
+              <br />
+              <span className="font-bold">
+                If you want to explore more about glassmorphism then please
+                click on &quot;Learn More&quot;.
+              </span>
             </p>
             <div className="mt-10 flex items-center justify-center gap-x-6">
               <Link
