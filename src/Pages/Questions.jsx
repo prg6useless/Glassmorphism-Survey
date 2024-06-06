@@ -1,17 +1,25 @@
 import { useNavigate, useLocation } from "react-router-dom";
 import { useState, useEffect } from "react";
-import { collection, addDoc } from "firebase/firestore";
+import {
+  collection,
+  addDoc,
+  getDocs,
+  updateDoc,
+  query,
+  where,
+} from "firebase/firestore";
 import { db } from "../firebase"; //
 import { questions } from "../Pages/data";
 
 const Questions = () => {
   const navigate = useNavigate();
   const location = useLocation();
-  const { name, email } = location.state || {};
+  const { name, email, transparency, blur, backgroundcolor, saturation } =
+    location.state || {};
 
   useEffect(() => {
     if (!name || !email) {
-      navigate("/home");
+      navigate("/");
     }
   }, [name, email, navigate]);
 
@@ -31,6 +39,12 @@ const Questions = () => {
           [key]: option,
         };
       }
+    });
+  };
+
+  const goBack = () => {
+    navigate("/sliders", {
+      state: { name, email},
     });
   };
 
@@ -60,17 +74,39 @@ const Questions = () => {
         };
       });
       try {
-        const docRef = await addDoc(collection(db, "surveyResponses"), {
-          name,
-          email,
-          answers,
-        });
-        console.log("Document written with ID: ", docRef.id);
+        // Check if there is an existing survey response document for the current user's email
+        const querySnapshot = await getDocs(
+          query(collection(db, "surveyResponses"), where("email", "==", email))
+        );
+
+        if (!querySnapshot.empty) {
+          // If a document exists, update the first found document
+          const docRef = querySnapshot.docs[0].ref;
+
+          // Update the existing document with the new slider values
+          await updateDoc(docRef, {
+            answers,
+          });
+
+          console.log("Document updated with ID: ", docRef.id);
+        } else {
+          // If no document exists, create a new one
+          const responseRef = await addDoc(collection(db, "surveyResponses"), {
+            name,
+            email,
+            transparency,
+            blur,
+            backgroundcolor: backgroundcolor.rgb,
+            saturation,
+            answers,
+          });
+          console.log("Document written with ID: ", responseRef.id);
+        }
       } catch (e) {
         console.error("Error adding document: ", e);
       }
       navigate(
-        "/sliders",
+        "/thankyou",
         {
           state: { name, email, answers },
         },
@@ -171,12 +207,21 @@ const Questions = () => {
         <h4 className=" mt-4 max-w-md text-left font-bold text-lg">
           The form cannot be resubmitted once you go to the next page
         </h4>
-        <button
-          type="submit"
-          className="block w-full rounded-lg bg-indigo-600 px-5 py-3 text-sm font-medium text-white"
-        >
-          Next
-        </button>
+        <div className="flex justify-evenly">
+          <button
+            type="button"
+            onClick={goBack}
+            className="block rounded-lg bg-indigo-600 px-5 py-3 text-sm font-medium text-white"
+          >
+            Go Back
+          </button>
+          <button
+            type="submit"
+            className="block rounded-lg bg-indigo-600 px-5 py-3 text-sm font-medium text-white"
+          >
+            Next
+          </button>
+        </div>
       </form>
     </>
   );

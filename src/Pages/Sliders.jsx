@@ -2,7 +2,6 @@ import { useEffect } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import Slider from "@mui/material/Slider";
 import { styled } from "@mui/material/styles";
-// import Tooltip from "@mui/material/Tooltip";
 import styledC from "styled-components";
 import { useState } from "react";
 import { SketchPicker } from "react-color";
@@ -12,9 +11,9 @@ import {
   collection,
   getDocs,
   addDoc,
-  updateDoc,
   query,
   where,
+  updateDoc,
 } from "firebase/firestore";
 import { db } from "../firebase";
 
@@ -62,7 +61,7 @@ const PrettoSlider = styled(Slider)({
 const Sliders = () => {
   const navigate = useNavigate();
   const location = useLocation();
-  const { name, email, answers } = location.state || {};
+  const { name, email } = location.state || {};
 
   useEffect(() => {
     if (!name || !email) {
@@ -106,23 +105,50 @@ const Sliders = () => {
         });
 
         console.log("Document updated with ID: ", docRef.id);
+        navigate(
+          "/questions",
+          {
+            state: {
+              name,
+              email,
+              transparency,
+              blur,
+              backgroundcolor: backgroundcolor.rgb,
+              saturation,
+            },
+          },
+          {
+            replace: true,
+          }
+        );
       } else {
         // If no document exists, create a new one
         const responseRef = await addDoc(collection(db, "surveyResponses"), {
           name,
           email,
-          answers,
           transparency,
           blur,
           backgroundcolor: backgroundcolor.rgb,
           saturation,
         });
-
         console.log("New document written with ID: ", responseRef.id);
+        navigate(
+          "/questions",
+          {
+            state: {
+              name,
+              email,
+              transparency,
+              blur,
+              backgroundcolor: backgroundcolor.rgb,
+              saturation,
+            },
+          },
+          {
+            replace: true,
+          }
+        );
       }
-      navigate("/thankyou", {
-        replace: true,
-      });
     } catch (e) {
       console.error("Error adding document: ", e);
     }
@@ -149,7 +175,7 @@ const Sliders = () => {
       <div className="background">
         <div className="flex flex-col lg:flex-row items-center lg:items-start p-5 lg:p-20 gap-10 lg:gap-20">
           <div className="login-box">
-            <Card className="w-96 max-w-sm p-4 sm:p-6 md:p-8">
+            <Card className=" max-w-sm p-4 sm:p-6 md:p-8">
               <form className="space-y-6">
                 <h5 className="text-2xl font-medium text-white dark:text-white">
                   Sign in to our platform
@@ -225,13 +251,6 @@ const Sliders = () => {
                 </div>
               </form>
             </Card>
-            <button
-              type="submit"
-              onClick={handleSubmit}
-              className="rounded-lg bg-indigo-600 hover:bg-indigo-500 mt-5 px-5 py-3 text-sm font-medium text-white"
-            >
-              Submit
-            </button>
           </div>
 
           <div className="editor flex flex-col gap-7">
@@ -239,7 +258,11 @@ const Sliders = () => {
               <h5 className="text-xl font-medium text-gray-900 dark:text-white">
                 Transparency
               </h5>
-              <Stack direction="row" alignItems="center" className="slider">
+              <Stack
+                direction="row"
+                alignItems="center"
+                className="flex w-auto bg-white p-1 rounded-2xl font-bold gap-2 md:p-3 md:gap-3"
+              >
                 0
                 <PrettoSlider
                   min={0}
@@ -260,7 +283,11 @@ const Sliders = () => {
               <h5 className="text-xl font-medium text-gray-900 dark:text-white">
                 Blur
               </h5>
-              <Stack direction="row" alignItems="center" className="slider">
+              <Stack
+                direction="row"
+                alignItems="center"
+                className="flex w-auto bg-white p-1 rounded-2xl font-bold gap-2 md:p-3 md:gap-3"
+              >
                 0
                 <PrettoSlider
                   min={0}
@@ -281,7 +308,11 @@ const Sliders = () => {
               <h5 className="text-xl font-medium text-gray-900 dark:text-white">
                 Saturation
               </h5>
-              <Stack direction="row" alignItems="center" className="slider">
+              <Stack
+                direction="row"
+                alignItems="center"
+                className="flex w-auto bg-white p-1 rounded-2xl font-bold gap-2 md:p-3 md:gap-3"
+              >
                 0
                 <PrettoSlider
                   min={0}
@@ -308,6 +339,14 @@ const Sliders = () => {
               />
             </div>
           </div>
+
+          <button
+            type="submit"
+            onClick={handleSubmit}
+            className="rounded-lg self-center bg-indigo-600 hover:bg-indigo-500 mt-5 px-5 py-3 text-sm font-medium text-white"
+          >
+            Submit
+          </button>
         </div>
       </div>
     </>

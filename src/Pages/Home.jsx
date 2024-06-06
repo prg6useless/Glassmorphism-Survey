@@ -23,21 +23,17 @@ const Home = () => {
             </h1>
             <h3 className="text-2xl font-semibold py-4">Research Survey</h3>
             <p className="mt-6 text-lg leading-8 text-gray-600 text-justify">
-              Thank you sincerely for participating in our research survey on
-              glass morphism. Your contribution is invaluable to our study, and
-              we greatly appreciate the time you&apos;ve taken to share your
-              insights with us. Please rest assured that all responses provided
-              are strictly confidential and will only be used for research
-              purposes. Your input will help us gain a deeper understanding of
-              glass morphism, its usage, and its impact on user experience. By
-              analyzing the data gathered from participants like you, we aim to
-              enhance our comprehension of this design trend and its
-              applications, ultimately leading to improved practices and
-              innovations in the field. This survey is estimated to take around
-              10 minutes to complete, and your cooperation is immensely valuable
-              in advancing our research efforts. Thank you once again for your
-              participation and for contributing to the advancement of knowledge
-              in this area.
+              Thank you for participating in our research survey on
+              glassmorphism, a UI design trend featuring a frosted glass effect
+              with blurred backgrounds behind semi-transparent panels, creating
+              depth and a sleek, modern aesthetic. Your confidential responses
+              will help us understand its usage and impact on user experience,
+              leading to improved practices and innovations. The survey takes
+              about 10 minutes, and your cooperation is immensely valuable in
+              advancing our research efforts. Thank you for contributing to the
+              advancement of knowledge in this area. 
+              <br/>If you want to explore more
+              about glassmorphism then please click on &quot;Learn More&quot;.
             </p>
             <div className="mt-10 flex items-center justify-center gap-x-6">
               <Link

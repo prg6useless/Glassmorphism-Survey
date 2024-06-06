@@ -27,7 +27,7 @@ const Email = () => {
       });
       console.log("Document written with ID: ", docRef.id);
       navigate(
-        "/questions",
+        "/sliders",
         {
           state: { name: formData.name, email: formData.email },
         },
