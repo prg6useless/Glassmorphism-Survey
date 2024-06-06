@@ -255,7 +255,7 @@ const Sliders = () => {
 
           <div className="editor flex flex-col gap-7">
             <div className="transparency">
-              <h5 className="text-xl font-medium text-gray-900 dark:text-white">
+              <h5 className="text-xl font-medium text-white dark:text-white">
                 Transparency
               </h5>
               <Stack
@@ -280,7 +280,7 @@ const Sliders = () => {
             </div>
 
             <div className="setblur">
-              <h5 className="text-xl font-medium text-gray-900 dark:text-white">
+              <h5 className="text-xl font-medium text-white dark:text-white">
                 Blur
               </h5>
               <Stack
@@ -305,7 +305,7 @@ const Sliders = () => {
             </div>
 
             <div className="transparency">
-              <h5 className="text-xl font-medium text-gray-900 dark:text-white">
+              <h5 className="text-xl font-medium text-white dark:text-white">
                 Saturation
               </h5>
               <Stack
@@ -330,7 +330,7 @@ const Sliders = () => {
             </div>
 
             <div>
-              <h5 className="text-xl font-medium text-gray-900 dark:text-white">
+              <h5 className="text-xl font-medium text-white dark:text-white">
                 Background Color
               </h5>
               <SketchPicker
