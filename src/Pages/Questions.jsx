@@ -219,7 +219,7 @@ const Questions = () => {
             type="submit"
             className="block rounded-lg bg-indigo-600 px-5 py-3 text-sm font-medium text-white"
           >
-            Next
+            Submit
           </button>
         </div>
       </form>

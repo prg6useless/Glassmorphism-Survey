@@ -345,7 +345,7 @@ const Sliders = () => {
             onClick={handleSubmit}
             className="rounded-lg self-center bg-indigo-600 hover:bg-indigo-500 mt-5 px-5 py-3 text-sm font-medium text-white"
           >
-            Submit
+            Next
           </button>
         </div>
       </div>
